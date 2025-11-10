@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<flow name="akhil_sample_apiFlow" doc:id="7237698a-9f6f-4f0a-a252-277c6d1b2d92" >
-		<logger level="INFO" doc:name="Logger" doc:id="ccd4802e-c88d-43e4-b76b-b52f54ab51cd" />
+		<logger level="INFO" doc:name="Logger" doc:id="ccd4802e-c88d-43e4-b76b-b52f54ab51cd" message="payload"/>
 		<ee:transform doc:name="Transform Message" doc:id="c2804136-a839-4051-87c4-1287ce36eec8" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -15,5 +15,17 @@ payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="233e037c-8315-400e-8f26-328c5336f755" message="#[payload]"/>
+	</flow>
+	<flow name="akhil_sample_apiFlow2" doc:id="0c258581-2bed-4660-bdc2-c4707a5ac550" >
+		<logger level="INFO" doc:name="Logger" doc:id="12eab4dc-e581-4ac6-a0c5-57ec615a6d2d" message="payload" />
+		<ee:transform doc:name="Transform Message" doc:id="7fbbc4bf-db9a-423c-8ef6-108dd8270d7a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger1" doc:id="629cbb0e-c5e7-4ee1-b937-a2e3650d606d" message="#[payload]" />
 	</flow>
 </mule>
